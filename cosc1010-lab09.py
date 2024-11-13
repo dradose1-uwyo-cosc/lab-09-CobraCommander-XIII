@@ -1,12 +1,10 @@
-# Your Name Here
+# Reuben McGuire
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section:
+# 11/13/2024
+# Lab 09
+# Lab Section: 15
 # Sources, people worked with, help given to:
-# Your
-# Comments
-# Here
+# 
 
 # Classes
 # For this assignment, you will be creating two classes:
@@ -35,6 +33,34 @@
 # - Assign the parameter for sauce to the attribute.
 # - Create the toppings attribute, starting off as a list only holding cheese.
 
+
+class Pizza:
+    """Represent attributes of an ordered pizza."""
+    
+    def __init__(self, size, sauce='red'):
+        """Initialize the size, sauce, and toppings of the pizza."""
+        size = self.size
+        sauce = self.sauce
+        toppings = [cheese,]
+    
+    def get_size(self,size_str):
+        """Get the size of the pizza from the user."""
+        if size_str.numeric() == True and int(size_str) >= 10:
+            size = int(size_str)
+        else:
+            size = 10
+        return size
+    
+    def get_sauce(self,sauce_str):
+        """Get the desired type of sauce."""
+        sauce = sauce_str
+        return sauce
+
+    def get_toppings(self,new_toppings):
+        """Get the desired toppings."""
+        toppings.append(new_toppings)
+        return toppings
+    
 
 # You will be creating a Pizzeria class with the following attributes:
 # - orders, the number of orders placed. Should start at 0.
@@ -69,6 +95,27 @@
 #   - The total price.
 # - getNumberOfOrders()
 #   - This will simply return the number of orders.
+
+
+class Pizzeria:
+    """Describe attributes of a pizzeria."""
+
+    def __init__(self):
+        """Initialize the attributes of a pizzeria."""
+        orders = 0
+        price_per_topping = 0.30
+        price_per_inch = 0.60
+        pizzas = []
+    
+    def placeOrder():
+        """Put together the pizza from user input."""
+        size = input("Please input your desired pizza size. The minimum default size is 10 inches.")
+    
+    def getPrice():
+    
+    def getReceipt():
+    
+    def getNumberOfOrders():
 
 
 # - Declare your pizzeria object.
