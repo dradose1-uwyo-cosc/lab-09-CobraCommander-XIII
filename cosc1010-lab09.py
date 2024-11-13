@@ -149,8 +149,8 @@ class Pizzeria:
 # - AFTER the loop, print how many orders were placed.
 
 
-restaurant = Pizzeria()
 pizza_list = []
+restaurant = Pizzeria()
 while True:
     inquiry = input("Do you want to order a pizza? Type 'exit' to leave, or type anything else to continue. ")
     if inquiry == "exit":
