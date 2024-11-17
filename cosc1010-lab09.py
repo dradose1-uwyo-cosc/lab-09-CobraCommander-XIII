@@ -5,6 +5,174 @@
 # Lab Section: 15
 # Sources, people worked with, help given to:
 # Chat-GPT-4. (2024, November 13). “Why is this code returning a bracketed object message, instead of the desired output?” Generated using OpenAI. https://chat.openai.com/
+# Chat-GPT-4. (2024, November 17). “If this is the code you previously gave me and it works:
+
+#class Pizza:
+#    """Represent attributes of an ordered pizza."""
+#    
+#    def __init__(self, size, sauce='red'):
+#        """Initialize the size, sauce, and toppings of the pizza."""
+#        self.size = self.getSize(size)
+#        self.sauce = self.getSauce(sauce)
+#        self.toppings = ['cheese']
+#
+#    def getSize(self, size_str):
+#        """Validate and return the size of the pizza."""
+#        if size_str.isnumeric() and int(size_str) >= 10:
+#            return int(size_str)
+#        else:
+#            return 10  # Default size
+#
+#    def getSauce(self, sauce_str):
+#        """Return the sauce type."""
+#        return sauce_str if sauce_str else 'red'  # Default to 'red' if empty
+#
+#    def getToppings(self, new_toppings):
+#        """Add toppings to the pizza."""
+#        self.toppings.extend(new_toppings)  # Use extend to add multiple toppings
+#        return self.toppings
+#
+#
+#class Pizzeria:
+#    """Describe attributes of a pizzeria."""
+#
+#    def __init__(self):
+#        """Initialize the attributes of a pizzeria."""
+#        self.orders = 0
+#        self.price_per_topping = 0.30
+#        self.price_per_inch = 0.60
+#        self.pizzas = []  # Store pizzas here
+#
+#    def placeOrder(self):
+#        """Put together the pizza from user input."""
+#        got_size = input("Please input your desired pizza size. The minimum default size is 10 inches. ")
+#        got_sauce = input("Please input your desired sauce. If you input nothing, the default is red marinara sauce. ")
+#        got_toppings = input("Please input your desired toppings, separated by a space. ").split()
+#        new_pizza = Pizza(got_size, got_sauce)
+#        new_pizza.getToppings(got_toppings)
+#        self.pizzas.append(new_pizza)
+#        return new_pizza  # Return the new pizza object
+
+#    def getPrice(self):
+#        """Total the price for all pizzas."""
+#        total_price = 0
+#        for pizza in self.pizzas:
+#            ind_price = (pizza.size * self.price_per_inch) + (len(pizza.toppings) * self.price_per_topping)
+#            total_price += ind_price
+#        return total_price
+#
+#    def getReceipt(self):
+#        """Print a string that acts as a receipt for the pizza order."""
+#        receipt = ""
+#        for pizza in self.pizzas:
+#            receipt += f"\nSize: {pizza.size}\nSauce: {pizza.sauce}\nToppings: {', '.join(pizza.toppings)}"
+#            receipt += f"\nPrice for Size: {pizza.size * self.price_per_inch}"
+#            receipt += f"\nPrice for Toppings: {len(pizza.toppings) * self.price_per_topping}"
+#            receipt += f"\nTotal Price: {pizza.size * self.price_per_inch + len(pizza.toppings) * self.price_per_topping}\n"
+#        return receipt
+#
+#    def getNumberOfOrders(self):
+#        """Return the number of orders placed."""
+#        return len(self.pizzas)
+#
+#
+## Main loop
+#pizza_list = []
+#restaurant = Pizzeria()
+#while True:
+#    inquiry = input("Do you want to order a pizza? Type 'exit' to leave, or type anything else to continue. ")
+#    if inquiry == "exit":
+#        break
+#    else:
+#        pizza = restaurant.placeOrder()  # Place the order
+#        print(restaurant.getPrice())  # Print total price
+#        print(restaurant.getReceipt())  # Print receipt
+#print(f"Total orders: {restaurant.getNumberOfOrders()}")
+#
+#
+#This is my version of the code, updated to match it, and it gives me the missing size_str problem:
+#
+#
+#class Pizza:
+#    """Represent attributes of an ordered pizza."""
+#    
+#    def __init__(self, size, sauce='red'):
+#        """Initialize the size, sauce, and toppings of the pizza."""
+#        self.size = self.getSize(size)
+#        self.sauce = self.getSauce(sauce)
+#        self.toppings = ['cheese']
+#
+#    def getSize(self,size_str):
+#        """Get the size of the pizza from the user."""
+#        if size_str.isnumeric() and int(size_str) >= 10:
+#            return int(size_str)
+#        else:
+#            return 10
+#    
+#    def getSauce(self,sauce_str):
+#        """Get the desired type of sauce."""
+#        if sauce_str:
+#            return sauce_str
+#        else:
+#            return 'red'
+#
+#    def getToppings(self,new_toppings):
+#        """Get the desired toppings."""
+#        self.toppings.extend(new_toppings)
+#        return self.toppings
+#
+#class Pizzeria:
+#    """Describe attributes of a pizzeria."""
+#
+#    def __init__(self):
+#        """Initialize the attributes of a pizzeria."""
+#        self.orders = 0
+#        self.price_per_topping = 0.30
+#        self.price_per_inch = 0.60
+#        self.pizzas = []
+#    
+#    def placeOrder(self):
+#        """Put together the pizza from user input."""
+#        got_size = input("Please input your desired pizza size. The minimum default size is 10 inches. ")
+#        got_sauce = input("Please input your desired sauce. If you input nothing, the default is red marinara sauce. ")
+#        got_toppings = input("Please input your desired toppings, separated by a space. ").split()
+#        new_pizza = Pizza(got_size, got_sauce)
+#        new_pizza.getToppings(got_toppings)
+#        self.pizzas.append(new_pizza)
+#        return new_pizza
+#    
+#    def getPrice(self):
+#        """Total the price for all pizzas."""
+#        total_price = 0
+#        for pizza in self.pizzas:
+#            ind_price = (pizza.size * self.price_per_inch) + (len(pizza.toppings) * self.price_per_topping)
+#            total_price += ind_price
+#        return total_price
+#    
+#    def getReceipt(self):
+#        """Print a string that acts as a receipt for the pizza order."""
+#        receipt = ""
+#        for pizza in self.pizzas:
+#            receipt += f"\nSize: {pizza.getSize()}\nSauce: {pizza.getSauce()}\nToppings: {pizza.getToppings()}"
+#            receipt += f"\nPrice for Size: {pizza.getSize()*price_per_inch}\nPrice for Toppings: {len(pizza.getToppings())*price_per_topping}"
+#            receipt += f"\nTotal Price: {Pizzeria.total_price()}"
+#        return receipt
+#
+#    def getNumberOfOrders(self):
+#        """Get the total number of ordered pizzas."""
+#        return len(self.pizzas)
+#
+#pizza_list = []
+#restaurant = Pizzeria()
+#while True:
+#    inquiry = input("Do you want to order a pizza? Type 'exit' to leave, or type anything else to continue. ")
+#    if inquiry == "exit":
+#        break
+#    else:
+#        pizza = restaurant.placeOrder()
+#        price = restaurant.getPrice()
+#        print(restaurant.getReceipt())
+#print(f"Number of orders: {restaurant.getNumberOfOrders()}")” Generated using OpenAI. https://chat.openai.com/
 
 # Classes
 # For this assignment, you will be creating two classes:
