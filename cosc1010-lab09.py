@@ -130,9 +130,9 @@ class Pizzeria:
         """Print a string that acts as a receipt for the pizza order."""
         receipt = ""
         for pizza in self.pizzas:
-            receipt += f"\nSize: {pizza.getSize()}\nSauce: {pizza.getSauce()}\nToppings: {pizza.getToppings()}"
-            receipt += f"\nPrice for Size: {pizza.getSize()*price_per_inch}\nPrice for Toppings: {len(pizza.getToppings())*price_per_topping}"
-            receipt += f"\nTotal Price: {Pizzeria.total_price()}"
+            receipt += f"\nSize: {pizza.size}\nSauce: {pizza.sauce}\nToppings: {', '.join(pizza.toppings)}"
+            receipt += f"\nPrice for Size: {pizza.size*self.price_per_inch}\nPrice for Toppings: {len(pizza.toppings)*self.price_per_topping}"
+            receipt += f"\nTotal Price: {pizza.size * self.price_per_inch + len(pizza.toppings) * self.price_per_topping}\n"
         return receipt
 
     def getNumberOfOrders(self):
